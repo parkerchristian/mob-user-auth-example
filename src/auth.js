@@ -1,4 +1,6 @@
 import { auth } from './firebase.js';
+import loadHeader from './header-component.js';
+
 const UI = new firebaseui.auth.AuthUI(auth);
 
 UI.start('#login-ui', {
@@ -8,6 +10,12 @@ UI.start('#login-ui', {
     ],
     signInSuccessUrl: './'
 });
+
+const options = {
+    skipAuth: true
+};
+
+loadHeader(options);
 
 
 

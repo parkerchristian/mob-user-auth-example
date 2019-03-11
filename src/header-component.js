@@ -29,16 +29,23 @@ export function makeProfileTemplate(user) {
 
 const headerNode = document.getElementById('header');
 
-export default function loadHeader() {
+export default function loadHeader(options) {
     const dom = makeHeaderTemplate();
     headerNode.appendChild(dom);
+
+    if(options && options.skipAuth) {
+        return;
+    }
 
     auth.onAuthStateChanged(user => {
         if(user) {
             const profile = makeProfileTemplate(user);
+            const signOutButton = profile.querySelector('button');
+            signOutButton.addEventListener('click', () => {
+                auth.signOut();
+            });
             headerNode.appendChild(profile);
-        }
-        else {
+        } else {
             window.location = './auth.html';
         }
     });
