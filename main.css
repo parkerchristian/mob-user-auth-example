@@ -3,12 +3,18 @@ header {
     justify-content: space-between;
     align-items: center;
 }
-header img {
+
+#static-header {
+    display:flex;
+}
+
+#static-header img {
     width:80px;
     height:80px;
     background-color: aquamarine;
 }
-header h1 {
+
+#static-header h1 {
     flex-grow: 1;
 }
 
