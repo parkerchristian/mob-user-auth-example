@@ -13,9 +13,10 @@ export function makeHeaderTemplate() {
 }
 
 export function makeProfileTemplate(user) {
+    const avatar = user.photoURL || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnN-1yD4W7elCW6bh1KHwsq4OOeI7GCUbnLw4DY_xoxocuixlkUQ';
     const html = `
         <div id="profile-display">
-            <img src="${user.photoURL}" alt="">
+            <img src="${avatar}" alt="">
             <h2>${user.displayName}</h2>
             <button id="sign-out">Sign Out</button>
         </div>
