@@ -1,7 +1,7 @@
 import { writeToQuery } from './hash-query-component.js';
 
-
 const searchForm = document.getElementById('search-form');
+
 searchForm.addEventListener('submit', event => {
     event.preventDefault();
     const searchInput = searchForm.querySelector('input');
