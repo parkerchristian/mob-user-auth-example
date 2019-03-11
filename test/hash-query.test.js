@@ -8,22 +8,22 @@ QUnit.module('QUERY TESTING');
 
 test('write search to query', assert => {
     // arrange
-    const searchTerm = 'star wars';
+    const query = 'star wars';
     const existingQuery = '';
-    const expected = 'searchTerm=star+wars';
+    const expected = 'query=star+wars';
     // act
-    const result = writeToQuery(existingQuery, searchTerm);
+    const result = writeToQuery(existingQuery, query);
     // assert
     assert.equal(result, expected);
 });
 
 test('write search to query with existing query', assert => {
     // arrange
-    const searchTerm = 'star wars';
-    const existingQuery = 'searchTerm=sponge+bob';
-    const expected = 'searchTerm=star+wars';
+    const query = 'star wars';
+    const existingQuery = 'query=sponge+bob';
+    const expected = 'query=star+wars';
     // act
-    const result = writeToQuery(existingQuery, searchTerm);
+    const result = writeToQuery(existingQuery, query);
     // assert
     assert.equal(result, expected);
 });
@@ -32,8 +32,8 @@ test('write search to query with existing query', assert => {
 
 test('read from query', assert => {    
     // arrange
-    const existingQuery = 'searchTerm=sponge+bob';
-    const expected = { searchTerm: 'sponge bob' };
+    const existingQuery = 'query=sponge+bob';
+    const expected = { query: 'sponge bob' };
     // act
     const result = readFromQuery(existingQuery);
     // assert

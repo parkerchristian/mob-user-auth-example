@@ -1,13 +1,13 @@
-export function writeToQuery(existingQuery, searchTerm) {
+export function writeToQuery(existingQuery, query) {
     const searchParams = new URLSearchParams(existingQuery);
-    searchParams.set('searchTerm', searchTerm);
+    searchParams.set('query', query);
     return searchParams.toString();
 }
 
 export function readFromQuery(existingQuery) {
     const searchParams = new URLSearchParams(existingQuery);
-    const searchTerm = searchParams.get('searchTerm');
+    const query = searchParams.get('query');
     return {
-        searchTerm: searchTerm
+        query: query
     };
 }
