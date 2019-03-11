@@ -1,5 +1,6 @@
 import loadHeader from './header-component.js';
 import loadMovies from './movie-list-component.js';
+import './search-component.js';
 
 loadHeader();
 const movies = [
