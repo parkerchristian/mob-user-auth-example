@@ -23,7 +23,6 @@ export default function loadMovies(movies) {
     movies.forEach(movie => {
         const movieLI = makeMovieTemplate(movie);
         const favoriteStar = movieLI.querySelector('.favorite-star');
-        //Use .once function
         const userID = auth.currentUser.uid;
         const userFavoritesRef = favoritesByUserRef.child(userID);
         const userFavoriteMovieRef = userFavoritesRef.child(movie.id);
@@ -39,7 +38,6 @@ export default function loadMovies(movies) {
                     favoriteStar.classList.add('favorite');
                 }
                 else {
-                    // remove fav function
                     isFavorite = false;
                     favoriteStar.textContent = '☆';
                     favoriteStar.classList.remove('favorite');
@@ -48,7 +46,6 @@ export default function loadMovies(movies) {
 
         favoriteStar.addEventListener('click', () => {
 
-            //if movie is already favorited, add empty star and remove from db
             if(isFavorite) {
                 isFavorite = false;
                 userFavoriteMovieRef.remove();
@@ -59,17 +56,13 @@ export default function loadMovies(movies) {
                 isFavorite = true;
                 favoriteStar.textContent = '★';
                 favoriteStar.classList.add('favorite');
-                
+
                 userFavoriteMovieRef.set({
                     id: movie.id,
                     title: movie.title,
                     poster_path: `https://image.tmdb.org/t/p/w154${movie.poster_path}`
                 });
             }
-
-            //if movie is not favorited, add dark start and add to db
-
-
         });
         movieListNode.appendChild(movieLI);
     });
