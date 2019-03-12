@@ -23,15 +23,52 @@ export default function loadMovies(movies) {
     movies.forEach(movie => {
         const movieLI = makeMovieTemplate(movie);
         const favoriteStar = movieLI.querySelector('.favorite-star');
-        favoriteStar.addEventListener('click', () => {
-            const userID = auth.currentUser.uid;
-            const userFavoritesRef = favoritesByUserRef.child(userID);
-            const userFavoriteMovieRef = userFavoritesRef.child(movie.id);
-            userFavoriteMovieRef.set({
-                id: movie.id,
-                title: movie.title,
-                poster_path: `https://image.tmdb.org/t/p/w154${movie.poster_path}`
+        //Use .once function
+        const userID = auth.currentUser.uid;
+        const userFavoritesRef = favoritesByUserRef.child(userID);
+        const userFavoriteMovieRef = userFavoritesRef.child(movie.id);
+
+        let isFavorite = false;
+
+        userFavoriteMovieRef.once('value')
+            .then(snapshot => {
+                const value = snapshot.val();
+                if(value) {
+                    isFavorite = true;
+                    favoriteStar.textContent = '★';
+                    favoriteStar.classList.add('favorite');
+                }
+                else {
+                    // remove fav function
+                    isFavorite = false;
+                    favoriteStar.textContent = '☆';
+                    favoriteStar.classList.remove('favorite');
+                }
             });
+
+        favoriteStar.addEventListener('click', () => {
+
+            //if movie is already favorited, add empty star and remove from db
+            if(isFavorite) {
+                isFavorite = false;
+                userFavoriteMovieRef.remove();
+                favoriteStar.classList.remove('favorite');
+                favoriteStar.textContent = '☆';
+            }
+            else {
+                isFavorite = true;
+                favoriteStar.textContent = '★';
+                favoriteStar.classList.add('favorite');
+                
+                userFavoriteMovieRef.set({
+                    id: movie.id,
+                    title: movie.title,
+                    poster_path: `https://image.tmdb.org/t/p/w154${movie.poster_path}`
+                });
+            }
+
+            //if movie is not favorited, add dark start and add to db
+
 
         });
         movieListNode.appendChild(movieLI);
