@@ -7,12 +7,12 @@ test('create movie template test', assert => {
     // arrange
     const movie = {
         title: 'Movie title',
-        src: 'https://images-na.ssl-images-amazon.com/images/I/91zh7rLwI3L._SY606_.jpg'
+        poster_path: '/fr8XRJiXppZdDy5E0IOH9OgVQHu.jpg'
     };
     const expected = `
         <li>
             <h2>Movie title</h2>
-            <img src="https://images-na.ssl-images-amazon.com/images/I/91zh7rLwI3L._SY606_.jpg">
+            <img src="https://image.tmdb.org/t/p/w154/fr8XRJiXppZdDy5E0IOH9OgVQHu.jpg">
         </li>
     `;
     // act
