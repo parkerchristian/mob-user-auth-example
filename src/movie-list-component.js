@@ -22,7 +22,7 @@ export default function loadMovies(movies) {
     }
     movies.forEach(movie => {
         const movieLI = makeMovieTemplate(movie);
-        const favoriteStar = movieLI.querySelector('favorite-star');
+        const favoriteStar = movieLI.querySelector('.favorite-star');
         favoriteStar.addEventListener('click', () => {
             const userID = auth.currentUser.uid;
             const userFavoritesRef = favoritesByUserRef.child(userID);

@@ -11,6 +11,7 @@ test('create movie template test', assert => {
     };
     const expected = `
         <li>
+            <span class="favorite-star">☆</span>
             <h2>Movie title</h2>
             <img src="https://image.tmdb.org/t/p/w154/fr8XRJiXppZdDy5E0IOH9OgVQHu.jpg">
         </li>
