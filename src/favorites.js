@@ -6,13 +6,11 @@ import objectToArray from './object-to-array.js';
 loadHeader();
 auth.onAuthStateChanged(user => {
     const userID = user.uid;
-    //path to db child
     const userFavoritesRef = favoritesByUserRef.child(userID);
     userFavoritesRef.once('value')
         .then(snapshot => {
             const data = snapshot.val();
             const favoritesList = objectToArray(data);
             loadMovies(favoritesList);
-            console.log(data);
         });
 });
