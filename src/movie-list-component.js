@@ -60,7 +60,7 @@ export default function loadMovies(movies) {
                 userFavoriteMovieRef.set({
                     id: movie.id,
                     title: movie.title,
-                    poster_path: `https://image.tmdb.org/t/p/w154${movie.poster_path}`
+                    poster_path: movie.poster_path
                 });
             }
         });

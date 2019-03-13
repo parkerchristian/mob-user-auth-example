@@ -1,11 +1,7 @@
+import objectToArray from '../src/object-to-array.js';
 const test = QUnit.test;
 
 QUnit.module('OBJECT-ARRAY.TEST');
-
-function objectToArray(object) {
-    const keys = Object.keys(object);
-    return keys.map(key => object[key]);
-}
 
 test('create array from object', assert => {
     //arrange
