@@ -34,6 +34,15 @@ header {
     display: flex;
     flex-wrap: wrap;
 }
+
+.favorite-star {
+    user-select: none;
+}
+
+.favorite-star.favorite {
+    color: coral;
+}
+
 #movie-list li {
     display: flex;
     flex-direction: column;

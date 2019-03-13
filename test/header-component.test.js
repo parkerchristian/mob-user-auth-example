@@ -9,6 +9,8 @@ test('create template for base header', assert => {
         <div id="static-header">
             <img src="" alt="">
             <h1>Read a Book</h1>
+            <a href="/">Home</a>
+            <a href="favorites.html">Favorites</a>
         </div>
     `;
     //Act
